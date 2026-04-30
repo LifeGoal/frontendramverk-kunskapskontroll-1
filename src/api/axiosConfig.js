@@ -1,9 +1,14 @@
 import axios from 'axios';
+console.log(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_KEY); // Debugging: Kontrollera att variablerna är tillgängliga
+const API_BASE_URL = process.env.REACT_APP_SUPABASE_URL;
+const API_KEY = process.env.REACT_APP_SUPABASE_KEY;
 
 const apiClient = axios.create({
-    baseURL: 'https://rickandmortyapi.com/api',
+    baseURL: `${API_BASE_URL}/rest/v1`,
     headers: {
-        'Content-Type': 'application/json',
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json'
     },
     timeout: 10000
 });
