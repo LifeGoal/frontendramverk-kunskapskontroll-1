@@ -15,7 +15,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
 function Item({ character }) {
     return (
-        <Link to={`/characters/${character.id}`} className="flex flex-col items-center gap-2 p-4 border rounded-lg hover:bg-slate-800 transition-colors">
+        <Link to={`/list/${character.id}`} className="flex flex-col items-center gap-2 p-4 border rounded-lg hover:bg-slate-800 transition-colors">
             <img src={character.image} className='rounded-lg' alt={character.name} />
             <div className='flex items-center w-full justify-center gap-2'>
                 <span className={`px-2 py-1 rounded-lg text-xs font-bold ${character.status === 'Alive' ? 'bg-green-500 text-white' : character.status === 'Dead' ? 'bg-red-500 text-white' : 'bg-gray-500 text-white'}`}>
