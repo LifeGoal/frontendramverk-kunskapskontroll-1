@@ -1,5 +1,4 @@
 import axios from 'axios';
-console.log(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_KEY); // Debugging: Kontrollera att variablerna är tillgängliga
 const API_BASE_URL = process.env.REACT_APP_SUPABASE_URL;
 const API_KEY = process.env.REACT_APP_SUPABASE_KEY;
 
@@ -26,7 +25,6 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.response.use(
     (response) => {
-        // Logga framgångsrika responses
         console.log(`✅ API Response: ${response.status} ${response.config.url}`);
         return response;
     },
