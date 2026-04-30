@@ -4,6 +4,7 @@ import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import List from './pages/List.jsx';
+import Details from './pages/Details.jsx';
 // import Posts from './pages/Posts.jsx';
 // import Post from './pages/Post.jsx';
 // import CreatePost from './pages/CreatePost.jsx';
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/list" element={<List />} />
+          <Route path="/list/:id" element={<Details />} />
           {/* <Route path="/posts" element={<Posts />} />
           <Route path="/posts/create" element={<CreatePost />} />
           <Route path="/posts/:id" element={<Post />} />
