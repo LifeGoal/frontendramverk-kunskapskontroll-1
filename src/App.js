@@ -4,6 +4,7 @@ import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import List from './pages/List.jsx';
+import Details from './pages/Details.jsx';
 // import Posts from './pages/Posts.jsx';
 // import Post from './pages/Post.jsx';
 // import CreatePost from './pages/CreatePost.jsx';
@@ -12,21 +13,21 @@ import List from './pages/List.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col bg-slate-900 text-white">
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/list" element={<List />} />
-          {/* <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/create" element={<CreatePost />} />
-          <Route path="/posts/:id" element={<Post />} />
-          <Route path="/posts/:id/edit" element={<EditPost />} />
-          <Route path="/contact" element={<Contact />} /> */}
-        </Routes>
+        <main className="flex-1 flex justify-center">
+          <section className="w-[70%] p-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/list/:id" element={<Details />} />
+            </Routes>
+          </section>
+        </main>
         <Footer />
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

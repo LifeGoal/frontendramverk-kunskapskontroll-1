@@ -1,9 +1,13 @@
 import axios from 'axios';
+const API_BASE_URL = process.env.REACT_APP_SUPABASE_URL;
+const API_KEY = process.env.REACT_APP_SUPABASE_KEY;
 
 const apiClient = axios.create({
-    baseURL: 'https://rickandmortyapi.com/api',
+    baseURL: `${API_BASE_URL}/rest/v1`,
     headers: {
-        'Content-Type': 'application/json',
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json'
     },
     timeout: 10000
 });
@@ -21,7 +25,6 @@ apiClient.interceptors.request.use(
 
 apiClient.interceptors.response.use(
     (response) => {
-        // Logga framgångsrika responses
         console.log(`✅ API Response: ${response.status} ${response.config.url}`);
         return response;
     },

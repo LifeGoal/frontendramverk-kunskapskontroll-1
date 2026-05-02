@@ -2,19 +2,19 @@ import api from './axiosConfig';
 
 export const getAll = async () => {
     try {
-        const response = await api.get('/character');
-        return response.data.results;
+        const response = await api.get('/champions');
+        return response.data;
     } catch (error) {
-        throw new Error('Kunde inte hämta karaktärer: ' + error.message);
+        throw new Error('Kunde inte hämta karaktärer. Error: ' + error.message);
     }
 };
 
 export const getById = async (id) => {
     try {
-        const response = await api.get(`/character/${id}`);
-        return response.data;
+        const response = await api.get(`/champions?select=*&id=eq.${id}&limit=1`);
+        return response.data[0];
     } catch (error) {
-        throw new Error('Kunde inte hämta karaktär: ' + error.message);
+        throw new Error('Kunde inte hämta karaktär. Error: ' + error.message);
     }
 };
 
@@ -26,6 +26,6 @@ export const update = async (id, data) => {
     return { ...data, id };
 };
 
-export const deleteCharacter = async (id) => {
+export const deleteChampion = async (id) => {
     return id;
 };
