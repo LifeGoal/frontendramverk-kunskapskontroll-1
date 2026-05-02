@@ -13,22 +13,21 @@ import Details from './pages/Details.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col bg-slate-900 text-white">
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/list/:id" element={<Details />} />
-          {/* <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/create" element={<CreatePost />} />
-          <Route path="/posts/:id" element={<Post />} />
-          <Route path="/posts/:id/edit" element={<EditPost />} />
-          <Route path="/contact" element={<Contact />} /> */}
-        </Routes>
+        <main className="flex-1 flex justify-center">
+          <section className="w-[70%] p-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/list/:id" element={<Details />} />
+            </Routes>
+          </section>
+        </main>
         <Footer />
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

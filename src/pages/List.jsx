@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getAll } from '../api/dataApi'
-import ItemList from '../components/ItemList.jsx';
+import ItemList from '../components/list/ItemList';
 
 function List() {
     const [items, setItems] = useState([]);
@@ -16,15 +16,21 @@ function List() {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <p className="text-center text-white mt-8">Laddar...</p>;
+    if (loading) return (
+        <div className='flex flex-col items-center gap-4'>
+            <h1 className="text-3xl font-bold">Champions List</h1>
+            <div className='flex flex-col items-center gap-4 mt-8'>
+                <p className="text-center text-white">Loading data from API...</p>
+            </div>
+        </div>
+    );
     if (error) return <p className="text-center text-red-500 mt-8">Fel: {error}</p>;
 
     return (
-        <div className="flex bg-slate-900 text-gray-800 items-center justify-center min-h-screen">
-            <section className="flex flex-col min-h-screen w-[70%] text-white p-8">
-                <h1 className="text-3xl font-bold">Character List</h1>
-                <ItemList characters={items} />
-            </section>
+        <div className='flex flex-col items-center gap-4'>
+            <h1 className="text-3xl font-bold">Champions List</h1>
+            <p className="text-center text-gray-400">Press on any champion card to see their details.</p>
+            <ItemList champions={items} />
         </div>
     )
 }
