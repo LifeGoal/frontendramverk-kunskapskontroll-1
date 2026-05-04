@@ -17,7 +17,7 @@ function App() {
       <div className="min-h-screen flex flex-col bg-slate-900 text-white">
         <Nav />
         <main className="flex-1 flex justify-center">
-          <section className="w-[70%] p-8">
+          <section className="w-full sm:w-[85%] lg:w-[70%]">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/list" element={<List />} />

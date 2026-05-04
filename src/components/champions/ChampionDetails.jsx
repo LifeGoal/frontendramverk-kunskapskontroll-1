@@ -31,7 +31,7 @@ function ChampionDetails({ champion }) {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col items-stretch justify-center text-white w-full">
+        <div className="flex flex-col items-stretch justify-center text-white w-full py-4">
             <button onClick={() => navigate(-1)} className="flex justify-center items-center w-max h-max px-2 py-2 rounded-lg hover:bg-slate-800 hover:text-slate-400 transition-colors duration-300">
                 <ArrowLongLeftIcon className="w-4 h-4 inline mr-2" />
                 Back
