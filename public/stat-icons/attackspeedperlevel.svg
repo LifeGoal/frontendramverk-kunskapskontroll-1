@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="28" r="15" fill="none" stroke="#dd4444" stroke-width="1.5"/>
+  <circle cx="32" cy="28" r="2.5" fill="white"/>
+  <line x1="32" y1="28" x2="32" y2="15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="28" x2="42" y2="31" stroke="#dd4444" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M42 16 A12 12 0 0 1 48 28" stroke="#ff6666" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <polygon points="48,23 51,28 45,29" fill="#ff6666"/>
+  <text x="32" y="60" font-family="Arial" font-size="9" font-weight="bold" fill="#ff6666" text-anchor="middle">+LVL</text>
+
+</svg>
