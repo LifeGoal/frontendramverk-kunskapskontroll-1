@@ -1,5 +1,6 @@
 import SegmentedProgress from "../util/progressbar";
 import ChampionAbilities from "./ChampionAbilities";
+import ChampionStats from "./ChampionStats";
 import { useNavigate } from "react-router-dom";
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline';
 import SkinCarousel from "../util/slider";
@@ -53,7 +54,7 @@ function ChampionDetails({ champion }) {
                     </div>
                 </div>
             </div>
-            
+
             <div className="flex flex-col bg-slate-950">
                 <ChampionAbilities abilities={champion.spells} />
             </div>
@@ -68,13 +69,8 @@ function ChampionDetails({ champion }) {
 
             <div className="flex flex-col bg-slate-950 px-4 py-8 gap-6 rounded-b-lg">
                 <h3 className="text-3xl font-bold italic">Stats</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                    {Object.entries(champion.stats).map(([key, value]) => (
-                        <div key={key} className="bg-slate-900/60 rounded-xl p-4 shadow-lg border border-slate-700">
-                            <h4 className="text-lg font-semibold text-amber-400 mb-2">{key.toUpperCase()}</h4>
-                            <p className="text-slate-300 text-sm">{value}</p>
-                        </div>
-                    ))}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <ChampionStats stats={champion.stats} />
                 </div>
 
                 <p className="text-sm italic text-gray-400">* Stats are based on base values and do not include scaling or items.</p>
@@ -89,4 +85,4 @@ function ChampionDetails({ champion }) {
     )
 };
 
-export default ChampionDetails
+export default ChampionDetails;

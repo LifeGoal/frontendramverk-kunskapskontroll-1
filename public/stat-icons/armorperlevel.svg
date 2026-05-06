@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <path d="M32 12 L48 19 L48 33 Q48 46 32 52 Q16 46 16 33 L16 19 Z" fill="#cc9900" stroke="#aa7700" stroke-width="1" opacity="0.7"/>
+  <path d="M32 18 L42 23 L42 33 Q42 43 32 48 Q22 43 22 33 L22 23 Z" fill="#ffcc22" opacity="0.7"/>
+  <text x="32" y="60" font-family="Arial" font-size="9" font-weight="bold" fill="#ffcc22" text-anchor="middle">+LVL</text>
+
+</svg>
