@@ -5,11 +5,9 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import List from './pages/List.jsx';
 import Details from './pages/Details.jsx';
-// import Posts from './pages/Posts.jsx';
-// import Post from './pages/Post.jsx';
-// import CreatePost from './pages/CreatePost.jsx';
-// import EditPost from './pages/EditPost.jsx';
-// import Contact from './pages/Contact.jsx';
+import Admin from './pages/Admin.jsx';
+import Create from './pages/Create.jsx';
+import Edit from './pages/Edit.jsx';
 
 function App() {
   return (
@@ -22,6 +20,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/list" element={<List />} />
               <Route path="/list/:id" element={<Details />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/edit/:id" element={<Edit />} />
             </Routes>
           </section>
         </main>

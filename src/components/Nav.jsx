@@ -7,12 +7,14 @@ function Nav() {
 
     return (
         <nav className="relative flex items-center py-3 px-6 sm:px-12 bg-neutral-950/60 backdrop-blur-md border-b border-white/5">
-            <NavLink to="/" className="opacity-80 hover:opacity-100 transition-opacity z-10"><img src="./logo.webp" alt="Logo" className="h-10 w-auto" /></NavLink>
+            <NavLink to="/" className="opacity-80 hover:opacity-100 transition-opacity z-10">
+                <img src="/logo.webp" alt="Logo" className="h-10 w-auto" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.style.display = 'none'; }} />
+            </NavLink>
 
             <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-8">
                 <li><NavLink to="/" end className={linkClass}>Home</NavLink></li>
                 <li><NavLink to="/list" className={linkClass}>Champions List</NavLink></li>
-                <li><NavLink to="/contact" className={linkClass}>Contact</NavLink></li>
+                <li><NavLink to="/admin" className={linkClass}>Admin</NavLink></li>
             </ul>
 
             <button className="md:hidden ml-auto flex flex-col gap-1.5 p-2 z-10" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
@@ -25,7 +27,7 @@ function Nav() {
                 <ul className="md:hidden absolute top-full left-0 right-0 flex flex-col bg-neutral-950/95 backdrop-blur-md border-b border-white/5 px-6 py-4 gap-2">
                     <li><NavLink to="/" end className={linkClass} onClick={() => setIsOpen(false)}>Home</NavLink></li>
                     <li><NavLink to="/list" className={linkClass} onClick={() => setIsOpen(false)}>Champions List</NavLink></li>
-                    <li><NavLink to="/contact" className={linkClass} onClick={() => setIsOpen(false)}>Contact</NavLink></li>
+                    <li><NavLink to="/admin" className={linkClass} onClick={() => setIsOpen(false)}>Admin</NavLink></li>
                 </ul>
             )}
         </nav>

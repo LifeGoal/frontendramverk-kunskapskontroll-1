@@ -7,7 +7,6 @@ function List() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-
     useEffect(() => {
         setLoading(true);
         getAll()
