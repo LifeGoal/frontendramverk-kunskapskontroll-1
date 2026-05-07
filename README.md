@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Inlämningsuppgift 1 - CRUD-applikation med API och routing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Projektbeskrivning
 
-## Available Scripts
+Det här projektet är en React-applikation om *League of Legends*-champions. Användaren kan bläddra bland champions, se detaljer, skapa nya entries, redigera befintliga och ta bort dem via ett externt API.
 
-In the project directory, you can run:
+Applikationen är byggd med React, React Router DOM, Axios och återanvändbara komponenter. API-anropen är separerade i egna filer och all CRUD-logik är samlad i ett tydligt API-lager.
 
-### `npm start`
+## Namn
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Viktor Lindqvist
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## API som används
 
-### `npm test`
+Projektet använder champion-data som hämtas via ett Supabase-baserat REST API med data från Riot Games / League of Legends.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Funktioner som är implementerade
 
-### `npm run build`
+- Startsida med introduktion och navigering
+- Lista med alla champions från API:et
+- Detaljsida för en enskild champion med dynamisk route via `useParams()`
+- Create-formulär för att lägga till en ny champion
+- Update-formulär för att redigera en befintlig champion
+- Delete-funktion för att ta bort champion från adminvyn
+- Gemensam navigation med `NavLink`
+- Loading states och felmeddelanden
+- Validering i formulär innan submit
+- Återanvändbara komponenter för listor, detaljer, navigation och formulär
+- Custom hooks för återanvändbar datahämtning och submit-logik
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instruktioner för att köra projektet
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Installera beroenden:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+2. Skapa en `.env`-fil i projektroten med följande variabler:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```env
+REACT_APP_SUPABASE_URL=din_supabase_url
+REACT_APP_SUPABASE_KEY=din_supabase_key
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+*OBS! En .env fil är redan skapad för denna applikation. Detta för att underlätta för den som ska/vill testa applikationen utan att be mig om API-nycklar med mera till mitt API. Detta kan komma att tas bort vid ett senare skede.*
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Starta utvecklingsservern:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+Alternativt:
+```bash
+npm run start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Öppna applikationen i webbläsaren:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```text
+http://localhost:3000
+```
 
-### Code Splitting
+*OBS! Detta sköts oftast automatiskt.*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Kända buggar eller begränsningar
 
-### Analyzing the Bundle Size
+- Vissa champions/karaktärer har så kallade "Chromas" i sina skins. Dessa har inga bilder och kan därför inte visas i detalj-vyn. Jag har manuellt raderat en del från API:et, men det förekommer fortfarande en del.
+- Applikationen kräver att miljövariablerna för Supabase är satta för att API-anrop ska fungera.
+- CRUD-operationerna är beroende av att endpointen tillåter skrivningar och att datamodellen matchar formuläret.
+- Eftersom projektet använder extern data kan vissa champions saknas eller innehållet ändras om API:t uppdateras.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Utanför uppgiftsbeskrivning
 
-### Making a Progressive Web App
+Jag har själv skapat ett API som jag använder genom Supabase. Detta eftersom jag ville göra uppgiften på "rätt sätt". Jag ville arbeta på ett mer "verklighetsbaserat" plan, där jag inte bara sparar datan i useState, utan använder CRUD som om det vore ett riktigt projekt.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Detta API är endast skapat för denna uppgift. Så det använder sig kanske inte av världens säkraste metoder, policys med mera. Men det ska duga för detta åtminstone!
 
-### Advanced Configuration
+## Struktur i projektet
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `src/api/` - Axios-konfiguration och CRUD-funktioner
+- `src/components/` - Återanvändbara UI-komponenter
+- `src/hooks/` - Custom hooks för datahämtning och submit
+- `src/pages/` - Sidor för routing och vyer
 
-### Deployment
+## Bygg och test
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
+npm test
+```
