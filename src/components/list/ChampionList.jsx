@@ -8,6 +8,6 @@ function ChampionList({ champions }) {
             ))}
         </ul>
     );
-}
+};
 
 export default ChampionList;

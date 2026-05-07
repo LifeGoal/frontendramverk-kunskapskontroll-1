@@ -56,6 +56,6 @@ function ChampionStats({ stats }) {
             </div>
         ))
     );
-}
+};
 
 export default ChampionStats;

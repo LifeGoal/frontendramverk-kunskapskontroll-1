@@ -31,6 +31,8 @@ function ChampionDetails({ champion }) {
 
     const navigate = useNavigate();
 
+    if (!champion) return <p className="text-center text-white mt-8">Loading champion details...</p>;
+
     return (
         <div className="flex flex-col items-stretch justify-center text-white w-full py-4">
             <button onClick={() => navigate(-1)} className="flex justify-center items-center w-max h-max px-2 py-2 rounded-lg hover:bg-slate-800 hover:text-slate-400 transition-colors duration-300">
@@ -82,7 +84,7 @@ function ChampionDetails({ champion }) {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 export default ChampionDetails;

@@ -590,6 +590,6 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
             <button className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">{submitLabel}</button>
         </form>
     );
-}
+};
 
 export default ChampionForm;
