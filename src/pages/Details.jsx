@@ -1,23 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
+import { useFetchData } from '../hooks/useFetchData';
 import { getById } from '../api/dataApi';
 import ChampionDetails from '../components/champions/ChampionDetails';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
 function Details() {
-    const [champion, setChampion] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const { id } = useParams();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        getById(id)
-            .then(data => setChampion(data))
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false));
-    }, [id]);
+    const fetchFn = useCallback(() => getById(id), [id]);
+    const { data: champion, loading, error } = useFetchData(fetchFn);
 
     if (loading) return <p className="text-center text-white mt-8">Loading...</p>;
     if (error) return <p className="text-center text-red-500 mt-8">Error: {error}</p>;
@@ -37,7 +30,7 @@ function Details() {
         <section className="flex flex-col items-center">
             <ChampionDetails champion={champion} />
         </section>
-    )
+    );
 };
 
 export default Details;

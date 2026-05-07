@@ -26,7 +26,6 @@ function Home() {
                 </div>
             </section>
 
-
             <section className="bg-slate-50 px-6 py-16 sm:py-24">
                 <div className="max-w-4xl mx-auto flex flex-col items-center gap-10">
                     <h2 className="text-3xl sm:text-4xl font-extrabold italic text-slate-900 text-center">WHAT YOU CAN DO</h2>
@@ -42,6 +41,6 @@ function Home() {
             </section>
         </div>
     );
-}
+};
 
 export default Home;

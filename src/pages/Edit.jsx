@@ -1,54 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useFetchData } from '../hooks/useFetchData';
+import { useHandleSubmit } from '../hooks/useHandleSubmit';
+import PageHeader from '../components/PageHeader';
 import ChampionForm from '../components/admin/ChampionForm';
 import { getById, update } from '../api/dataApi';
 
 function Edit() {
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const [champion, setChampion] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const fetchFn = useCallback(() => getById(id), [id]);
+	const { data: champion, loading, error: fetchError } = useFetchData(fetchFn);
+	const { handleSubmit, error } = useHandleSubmit((data) => update(id, data), () => navigate('/admin'));
 
-	useEffect(() => {
-		setLoading(true);
-		getById(id)
-			.then(data => setChampion(data))
-			.catch(err => setError(err.message))
-			.finally(() => setLoading(false));
-	}, [id]);
-
-	const handleSubmit = async (championData) => {
-		try {
-			await update(id, championData);
-			navigate('/admin');
-		} catch (err) {
-			setError(err.message);
-		}
-	};
-
-	if (loading) {
-		return (
-			<div className='flex flex-col items-center gap-4 bg-white p-4 sm:p-8 lg:p-16'>
-				<p className="text-center text-black text-sm sm:text-base lg:text-lg">ADMIN PAGE</p>
-				<h1 className="text-3xl sm:text-5xl lg:text-6xl text-slate-900 italic font-extrabold">EDIT A CHAMPION</h1>
-				<p className="text-center text-black">Loading champion data...</p>
-			</div>
-		);
-	}
-
-	if (error) {
-		return <p className="text-center text-red-500 mt-8">Error: {error}</p>;
-	}
+	if (loading) return <PageHeader label="ADMIN PAGE" title="EDIT A CHAMPION" description="Loading champion data..." />;
+	if (fetchError) return <p className="text-center text-red-500 mt-8">Error: {fetchError}</p>;
 
 	return (
-		<div className='flex flex-col items-center gap-4 bg-white p-4 sm:p-8 lg:p-16'>
-			<p className="text-center text-black text-sm sm:text-base lg:text-lg">ADMIN PAGE</p>
-			<h1 className="text-3xl sm:text-5xl lg:text-6xl text-slate-900 italic font-extrabold">EDIT A CHAMPION</h1>
-            <p className="text-center text-black">Fill in the details below to update the champion</p>
+		<PageHeader label="ADMIN PAGE" title="EDIT A CHAMPION" description="Fill in the details below to update the champion">
+			{error && <p className="text-red-600 text-sm">{error}</p>}
 			<ChampionForm initialValues={champion} onSubmit={handleSubmit} submitLabel="Update Champion" />
-		</div>
+		</PageHeader>
 	);
-}
+};
 
 export default Edit;
