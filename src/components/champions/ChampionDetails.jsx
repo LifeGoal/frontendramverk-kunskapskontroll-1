@@ -40,7 +40,7 @@ function ChampionDetails({ champion }) {
                 Back
             </button>
             <div className="relative w-full">
-                <img src={champion.skins[0].splash} alt={champion.name} loading="lazy" className="w-full h-auto rounded-t-lg mt-4 brightness-50" />
+                <img src={champion.skins[0].splash} alt={champion.name} loading="lazy" className="w-full h-auto sm:rounded-t-lg mt-4 brightness-50" />
                 <div className="absolute inset-0 flex flex-col justify-center items-start gap-3 p-4 sm:p-8 lg:p-12">
                     <div className="max-w-full sm:max-w-xl lg:max-w-2xl space-y-2">
                         <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">{champion.title.toUpperCase()}</h2>
