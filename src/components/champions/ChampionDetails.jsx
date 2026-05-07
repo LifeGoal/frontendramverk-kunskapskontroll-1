@@ -35,20 +35,22 @@ function ChampionDetails({ champion }) {
 
     return (
         <div className="flex flex-col items-stretch justify-center text-white w-full py-4">
-            <button onClick={() => navigate(-1)} className="flex justify-center items-center w-max h-max px-2 py-2 rounded-lg hover:bg-slate-800 hover:text-slate-400 transition-colors duration-300">
+            <button onClick={() => navigate(-1)} className="flex w-fit justify-center items-center h-max px-2 py-2 rounded-lg hover:bg-slate-800 hover:text-slate-400 transition-colors duration-300">
                 <ArrowLongLeftIcon className="w-4 h-4 inline mr-2" />
                 Back
             </button>
             <div className="relative w-full">
-                <img src={champion.skins[0].splash} alt={champion.name} loading="lazy" className="w-full h-auto rounded-t-lg mt-4 brightness-50" />
-                <div className="absolute inset-0 flex flex-col p-4 w-1/2 left-20 gap-4 justify-center items-start">
-                    <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">{champion.title.toUpperCase()}</h2>
-                    <h1 className="text-7xl italic font-bold">{champion.name.toUpperCase()}</h1>
-                    <p>{champion.blurb}</p>
+                <img src={champion.skins[0].splash} alt={champion.name} loading="lazy" className="w-full h-auto sm:rounded-t-lg mt-4 brightness-50" />
+                <div className="absolute inset-0 flex flex-col justify-center items-start gap-3 p-4 sm:p-8 lg:p-12">
+                    <div className="max-w-full sm:max-w-xl lg:max-w-2xl space-y-2">
+                        <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">{champion.title.toUpperCase()}</h2>
+                        <h1 className="text-xl sm:text-5xl lg:text-7xl italic font-bold leading-none break-words">{champion.name.toUpperCase()}</h1>
+                        <p className="text-xs sm:text-base lg:text-lg text-slate-100/90">{champion.blurb}</p>
+                    </div>
                     <SegmentedProgress value={Math.round(champion.info.difficulty * 10)} message={`DIFFICULTY: ${difficultyLabels[Math.round(champion.info.difficulty)].toUpperCase()}`} />
-                    <div className="flex flex-col gap-2">
-                        <p className="text-md font-semibold">ROLES</p>
-                        <div className="flex gap-2">
+                    <div className="flex flex-row items-center gap-2">
+                        <p className="text-sm sm:text-md lg:text-lg font-semibold">ROLES</p>
+                        <div className="flex flex-wrap gap-2 max-w-full">
                             {champion.tags.map((tag, index) => (
                                 <span key={index} className={`${roleColors[tag] || 'bg-gray-600'} text-xs rounded-lg font-semibold px-2 py-1 rounded text-center`}>• {tag.toUpperCase()}</span>
                             ))}
@@ -62,8 +64,8 @@ function ChampionDetails({ champion }) {
             </div>
 
             <div className="flex flex-col bg-slate-950">
-                <div className="flex justify-between items-center px-4 py-8">
-                    <h3 className="text-3xl font-bold italic">{champion.name.toUpperCase()}'S SKINS</h3>
+                <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-end px-4 py-8">
+                    <h3 className="text-2xl sm:text-3xl font-bold italic">{champion.name.toUpperCase()}'S SKINS</h3>
                     <p className="text-sm italic text-gray-400">A TOTAL OF <strong className="text-white">{champion.skins.length}</strong> SKINS AVAILABLE</p>
                 </div>
                 <SkinCarousel skinsData={champion.skins} />
@@ -71,7 +73,7 @@ function ChampionDetails({ champion }) {
 
             <div className="flex flex-col bg-slate-950 px-4 py-8 gap-6 rounded-b-lg">
                 <h3 className="text-3xl font-bold italic">Stats</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                     <ChampionStats stats={champion.stats} />
                 </div>
 

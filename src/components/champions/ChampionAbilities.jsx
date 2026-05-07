@@ -4,10 +4,10 @@ function ChampionAbilities({ abilities }) {
 
     return (
         <div className="flex flex-col px-4 mt-6">
-            <h2 className="text-3xl font-bold mb-6 italic">ABILITIES</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 italic">ABILITIES</h2>
 
             <div className="mb-6 bg-slate-900/60 rounded-xl p-4 shadow-lg border border-slate-700">
-                <div className="flex gap-4 items-start">
+                <div className="flex flex-row gap-4 items-start">
                     <img src={passive.image} alt={passive.name} loading="lazy" className="w-16 h-16 rounded-md border border-slate-600"/>
 
                     <div>
@@ -17,10 +17,10 @@ function ChampionAbilities({ abilities }) {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {spells.map((spell, index) => (
                     <div key={index} className="bg-slate-900/60 rounded-xl p-4 shadow-lg border border-slate-700 hover:border-amber-500 transition">
-                        <div className="flex gap-4 items-start">
+                        <div className="flex flex-row gap-4 items-start">
                             <img src={spell.image} alt={spell.name} loading="lazy" className="w-16 h-16 rounded-md border border-slate-600"/>
 
                             <div className="flex flex-col">

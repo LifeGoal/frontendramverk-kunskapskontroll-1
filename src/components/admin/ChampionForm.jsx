@@ -414,8 +414,8 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 w-full sm:w-3/4 lg:w-1/2">
-            <div className="flex flex-row justify-between gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-gray-100 shadow-md rounded px-4 py-6 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between gap-4">
                 <div className="flex flex-col w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
                     <input required className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Enter champion name" value={formValues.name} onChange={(e) => updateField("name", e.target.value)} />
@@ -444,7 +444,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
 
             <div className="flex flex-col">
                 <p className="text-gray-700 text-sm font-bold mb-2 uppercase tracking-wide border-b pb-1">Champion Stats</p>
-                <div className="flex flex-row gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {championStats.map(({ id, label }) => (
                         <div key={id} className="flex flex-col w-full">
                             <label className="block text-gray-700 text-xs font-semibold mb-1" htmlFor={id}>{label}</label>
@@ -456,7 +456,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
 
             <div>
                 <p className="text-gray-700 text-sm font-bold mb-2 uppercase tracking-wide border-b pb-1">Base Stats</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                     {baseStats.map(({ id, label }) => (
                         <div key={id} className="flex flex-col">
                             <label className="block text-gray-700 text-xs font-semibold mb-1" htmlFor={id}>{label}</label>
@@ -466,7 +466,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
                 </div>
 
                 <p className="text-gray-700 text-sm font-bold mb-2 uppercase tracking-wide border-b pb-1">Per Level Stats</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                     {perLevelStats.map(({ id, label }) => (
                         <div key={id} className="flex flex-col">
                             <label className="block text-gray-700 text-xs font-semibold mb-1" htmlFor={id}>{label}</label>
@@ -486,7 +486,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
 
                     <div className="bg-white border rounded p-4">
                         <p className="text-gray-700 text-sm font-bold mb-3 uppercase tracking-wide border-b pb-1">Add Skin</p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-3">
                             {skinStructure.map(({ key, label, placeholder }) => (
                                 <div key={key} className="flex flex-col">
                                     <label className="block text-gray-600 text-xs font-semibold mb-1">{label}</label>
@@ -501,7 +501,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
                     {skins.length > 0 && (
                         <div>
                             <p className="text-gray-700 text-sm font-bold mb-2 uppercase tracking-wide">Skins ({skins.length})</p>
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                                 {skins.map((skin, index) => (
                                     <div key={index} className="relative rounded overflow-hidden shadow border bg-white group">
                                         {skin.splash ? (<img src={skin.splash} alt={skin.name} className="w-full h-28 object-cover object-top" />) : (<div className="w-full h-28 bg-gray-200 flex items-center justify-center text-gray-400 text-xs">No image</div>)}
@@ -561,7 +561,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
 
                             <div className="mb-3">
                                 <label className="block text-gray-600 text-xs font-semibold mb-1">Cost (per level — {levels} levels)</label>
-                                <div className="flex gap-2">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
                                     {ability.cost.map((val, i) => (
                                         <div key={i} className="flex flex-col items-center w-full">
                                             <span className="text-gray-400 text-xs mb-1">{i + 1}</span>
@@ -573,7 +573,7 @@ function ChampionForm({ initialValues, onSubmit, submitLabel = "Create Champion"
 
                             <div>
                                 <label className="block text-gray-600 text-xs font-semibold mb-1">Cooldown (per level — {levels} levels)</label>
-                                <div className="flex gap-2">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
                                     {ability.cooldown.map((val, i) => (
                                         <div key={i} className="flex flex-col items-center w-full">
                                             <span className="text-gray-400 text-xs mb-1">{i + 1}</span>

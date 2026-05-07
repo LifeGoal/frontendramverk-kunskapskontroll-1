@@ -6,7 +6,7 @@ function Nav() {
     const linkClass = ({ isActive }) => `p-2 rounded-md transition-colors ${isActive ? "text-white underline underline-offset-8" : "text-neutral-400 hover:text-white hover:bg-neutral-800"}`;
 
     return (
-        <nav className="relative flex items-center py-3 px-6 sm:px-12 bg-neutral-950/60 backdrop-blur-md border-b border-white/5">
+        <nav className="relative flex items-center py-3 px-6 sm:px-12 bg-neutral-950/60 backdrop-blur-md border-b border-white/5 z-50">
             <NavLink to="/" className="opacity-80 hover:opacity-100 transition-opacity z-10">
                 <img src="/logo.webp" alt="Logo" className="h-10 w-auto" loading="lazy" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.style.display = 'none'; }} />
             </NavLink>

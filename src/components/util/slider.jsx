@@ -28,7 +28,7 @@ const SkinCarousel = ({ skinsData }) => {
                 ))}
             </Swiper>
 
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-50 text-white text-2xl font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 text-center text-white text-sm sm:text-xl lg:text-2xl font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] px-4 max-w-[90%]">
                 {skinsData[activeIndex].name === "default" ? "DEFAULT SKIN" : skinsData[activeIndex].name.toUpperCase()}
             </div>
         </div>
